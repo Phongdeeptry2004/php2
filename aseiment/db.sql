@@ -17,13 +17,20 @@ CREATE TABLE Truyen (
     MaTruyen INT PRIMARY KEY AUTO_INCREMENT,
     TieuDe VARCHAR(255) NOT NULL,
     MaTacGia INT,
-    TheLoai VARCHAR(50),
     MoTa TEXT,
+    LuotXem int,
+    LuotThich INT, 
+    DanhGia int,
     ThoiDiemTao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (MaTacGia) REFERENCES NguoiDung(MaNguoiDung),
     FOREIGN KEY (MaDanhMuc) REFERENCES DanhMucTruyen(MaDanhMuc)
 );
-
+CREATE TABLE TheLoai (
+    MaTheLoai INT PRIMARY KEY,
+    MaTruyen int,
+    TenTheLoai VARCHAR(50),
+    FOREIGN KEY (MaTruyen) REFERENCES Truyen(MaTruyen)
+)
 -- Tạo bảng lịch sử truyện
 CREATE TABLE LichSuDocTruyen (
     MaLichSu INT PRIMARY KEY AUTO_INCREMENT,
